@@ -8,7 +8,7 @@ Eclipse 3.6.2，JDK 1.6。
 
 安装下述插件时，将`plugins`目录下内容拷贝到Eclipse的`plugins`目录下再重启即可。
 
-选择![下载](https://www.eclipse.org/gef/downloads/index.php)GEF 3.1.0的SDK。
+选择[下载](https://www.eclipse.org/gef/downloads/index.php)GEF 3.1.0的SDK。
 
 ## 运行
 
