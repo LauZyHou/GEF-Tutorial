@@ -1,12 +1,19 @@
 package gef.tutorial.step.ui;
 
+import gef.tutorial.step.model.HelloModel;
+import gef.tutorial.step.parts.PartFactory;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.ui.parts.GraphicalEditor;
 
 public class DiagramEditor extends GraphicalEditor {
 	// 手动添加一个ID用于标识这个Editor
 	public static final String ID = "gef.tutorial.step.ui.DiagramEditor";
+
+	// 视图
+	GraphicalViewer viewer;
 
 	public DiagramEditor() {
 		// 在构造函数里设置Edit Domain
@@ -18,10 +25,19 @@ public class DiagramEditor extends GraphicalEditor {
 		setEditDomain(new DefaultEditDomain(this));
 	}
 
+	// 配置视图
+	@Override
+	protected void configureGraphicalViewer() {
+		super.configureGraphicalViewer();
+		viewer = getGraphicalViewer();
+		// EditPartFactory将模型Model映射到控制器Part
+		viewer.setEditPartFactory(new PartFactory());
+	}
+
 	@Override
 	protected void initializeGraphicalViewer() {
-		// TODO Auto-generated method stub
-
+		// 设置Viewer中显示的内容
+		viewer.setContents(new HelloModel());
 	}
 
 	@Override
