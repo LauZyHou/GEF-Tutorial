@@ -1,5 +1,6 @@
 package gef.tutorial.step.parts;
 
+import gef.tutorial.step.model.ContentsModel;
 import gef.tutorial.step.model.HelloModel;
 
 import org.eclipse.gef.EditPart;
@@ -13,6 +14,8 @@ public class PartFactory implements EditPartFactory {
 		// 根据模型的类型返回一个控制器对象
 		if (modelElement instanceof HelloModel)
 			return new HelloEditPart();
+		else if (modelElement instanceof ContentsModel)
+			return new ContentsEditPart();
 		// 如果提供的模型类型在上面没有找到，抛掷异常
 		throw new RuntimeException("Can't create part for model Element:"
 				+ ((modelElement != null) ? modelElement.getClass() : "null"));

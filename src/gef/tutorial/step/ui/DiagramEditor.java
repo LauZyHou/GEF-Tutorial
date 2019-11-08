@@ -1,9 +1,11 @@
 package gef.tutorial.step.ui;
 
+import gef.tutorial.step.model.ContentsModel;
 import gef.tutorial.step.model.HelloModel;
 import gef.tutorial.step.parts.PartFactory;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.ui.parts.GraphicalEditor;
@@ -36,8 +38,23 @@ public class DiagramEditor extends GraphicalEditor {
 
 	@Override
 	protected void initializeGraphicalViewer() {
+		// 用ContentsModel作为父模型
+		ContentsModel parent = new ContentsModel();
+		// 在其中添加子模型
+		HelloModel child1 = new HelloModel();
+		child1.setConstraint(new Rectangle(0, 0, -1, -1));
+		parent.addChild(child1);
+
+		HelloModel child2 = new HelloModel();
+		child2.setConstraint(new Rectangle(30, 30, -1, -1));
+		parent.addChild(child2);
+
+		HelloModel child3 = new HelloModel();
+		child3.setConstraint(new Rectangle(10, 80, 80, 50));
+		parent.addChild(child3);
+
 		// 设置Viewer中显示的内容
-		viewer.setContents(new HelloModel());
+		viewer.setContents(parent);
 	}
 
 	@Override
