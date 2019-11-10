@@ -23,6 +23,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="gef.tutorial.step.ui.DiagramEditor"
+            contributorClass="gef.tutorial.step.actions.DiagramActionBarContributor"
             default="false"
             icon="icons/example.png"
             id="gef.tutorial.step.ui.DiagramEditor"

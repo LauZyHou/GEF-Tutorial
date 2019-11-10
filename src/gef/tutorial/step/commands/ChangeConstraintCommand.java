@@ -9,6 +9,7 @@ import org.eclipse.gef.commands.Command;
 public class ChangeConstraintCommand extends Command {
 	private HelloModel helloModel;// 本命令所作用的模型
 	private Rectangle constraint; // 要改变为的，新的约束
+	private Rectangle oldConstraint; // undo/redo用，记录旧的约束
 
 	// 在这里改变模型的约束，也就是为模型重新设置约束为这个新约束
 	@Override
@@ -22,6 +23,13 @@ public class ChangeConstraintCommand extends Command {
 
 	public void setModel(Object model) {
 		this.helloModel = (HelloModel) model;
+		// 模型改变时，记录以前的约束
+		oldConstraint = constraint;
+	}
+
+	// 重载undo以做撤销操作,不必重载redo(redo执行的就是execute操作)
+	public void undo() {
+		helloModel.setConstraint(oldConstraint);
 	}
 
 }
